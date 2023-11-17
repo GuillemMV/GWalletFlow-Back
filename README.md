@@ -6,4 +6,4 @@ It is being made with Java and Quarkus, a cloud-native and microservices framewo
 Just navigate to the root of the project and execute on a terminal:
 ```bash
 ./mvnw quarkus:dev
-```rkus:dev```
+```

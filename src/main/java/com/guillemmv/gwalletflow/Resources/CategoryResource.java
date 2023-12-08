@@ -8,6 +8,8 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +27,22 @@ public class CategoryResource {
         
         if(!categories.isEmpty()){
             return Response.ok(categories).build();
+        }else{
+            return Response.status(404).entity("There are no entries!").build();
+        }
+    }
+    
+    @GET
+    @Path("/names")
+    public Response getAllNames(){
+        List<Category> categories = Category.listAll();
+        List<String> names = new ArrayList<String>();
+        
+        if(!categories.isEmpty()){
+            for(Category c : categories) {
+            	names.add(c.getName());
+            }
+            return Response.ok(names).build();
         }else{
             return Response.status(404).entity("There are no entries!").build();
         }
